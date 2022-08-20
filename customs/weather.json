@@ -1,0 +1,74 @@
+{
+  "formatVersion": "1.0",
+  "tagData": {
+    "name": "Weather",
+    "icon": "data:image/png;base64,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",
+    "description": "This is a software block that provides weather and wind information.",
+    "functions": [
+      {
+        "id": "function_0",
+        "name": "Weather",
+        "connector": {
+          "inputs": [{ "label": "" }],
+          "outputs": [
+            { "label": "Sunny" },
+            { "label": "Cloudy" },
+            { "label": "Rainy" }
+          ]
+        },
+        "properties": [
+          {
+            "name": "lat",
+            "referenceName": "lat",
+            "type": "number",
+            "defaultValue": "35.709"
+          },
+          {
+            "name": "lon",
+            "referenceName": "lon",
+            "type": "number",
+            "defaultValue": "139.7319"
+          }
+        ],
+        "extension": {
+          "initialize": "",
+          "receive": "",
+          "execute": "ajax ({\n  url : \"https://api.openweathermap.org/data/2.5/weather\",\n  data : {\n    \"lat\" : properties.lat,\n\t\"lon\": properties.lon,\n    \"APPID\" : 'xxxxxxxx'\n  },\n  type : \"get\",\n  timeout : 5000,\n  success : function (json) {\n\tlog(JSON.stringify(json));\n    var id = json.weather[0].id;\n    var weather = 1; // Cloudy\n    if (id < 700) weather = 2; // Rainy\n    if (id == 800 || id == 801) weather = 0; // Sunny\n    callbackSuccess ({\n      resultType : \"continue\",\n      runtimeValues : {\n        outputIndex : weather\n      }\n    });\n  }\n});\n\nreturn {\n  resultType : \"pause\"\n};",
+          "result": "return {\n  indexes : [runtimeValues.outputIndex],\n  resultType : \"continue\"\n};"
+        }
+      },
+      {
+        "id": "function_1",
+        "name": "Wind",
+        "connector": {
+          "inputs": [{ "label": "" }],
+          "outputs": [
+            { "label": "Light" },
+            { "label": "Moderate" },
+            { "label": "Strong" }
+          ]
+        },
+        "properties": [
+          {
+            "name": "lat",
+            "referenceName": "lat",
+            "type": "number",
+            "defaultValue": "35.709"
+          },
+          {
+            "name": "lon",
+            "referenceName": "lon",
+            "type": "number",
+            "defaultValue": "139.7319"
+          }
+        ],
+        "extension": {
+          "initialize": "",
+          "receive": "",
+          "execute": "ajax ({\n  url : \"https://api.openweathermap.org/data/2.5/weather\",\n  data : {\n    \"lat\" : properties.lat,\n\t\"lon\": properties.lon,\n    \"APPID\" : 'xxxxxxxx'\n  },\n  type : \"get\",\n  timeout : 5000,\n  success : function (json) {\n\tlog(json);\n    var speed = json.wind.speed;\n    var wind = 0; // Light\n    if (3.4 <= speed) wind = 1; // Moderate\n    if (8.0 <= speed) wind = 2; // Strong\n    callbackSuccess ({\n      resultType : \"continue\",\n      runtimeValues : {\n        outputIndex : wind\n      }\n    });\n  }\n});\n\nreturn {\n  resultType : \"pause\"\n};",
+          "result": "return {\n  indexes : [runtimeValues.outputIndex],\n  resultType : \"continue\"\n};"
+        }
+      }
+    ]
+  }
+}

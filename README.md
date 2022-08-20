@@ -1,4 +1,4 @@
-# MERSH で IoT
+# MESH で IoT
 
 Mesh を色々 試していきます。
 

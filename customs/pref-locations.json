@@ -1,0 +1,32 @@
+{
+  "formatVersion": "1.0",
+  "tagData": {
+    "name": "Pref_locations",
+    "icon": "data:image/png;base64,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",
+    "description": "This is a software block that provides weather and wind information.",
+    "functions": [
+      {
+        "id": "function_0",
+        "name": "lat_lon",
+        "connector": {
+          "inputs": [{ "label": "prefecture" }],
+          "outputs": [{ "label": "locations" }]
+        },
+        "properties": [
+          {
+            "name": "prefecture",
+            "referenceName": "prefecture",
+            "type": "string",
+            "defaultValue": "東京都"
+          }
+        ],
+        "extension": {
+          "initialize": "",
+          "receive": "",
+          "execute": "log(JSON.stringify(messageValues));\n\najax ({\n  url : \"https://api.sssapi.app/ouZltg7fT2t9kbyodTQZ3\",\n  type : \"get\",\n  timeout : 5000,\n  success : function (json) {\n\t// log(JSON.stringify(json));\n\t// 東京都の緯度、軽度をデフォルトにする\n\tmessageValues.lat = 35.709;\n\tmessageValues.lon = 139.7319;\n\n\tjson.forEach(function(row){\n      // log(JSON.stringify(row));\n\t  log(row.pref_name + \", \" + properties.prefecture);\n\t  if (row.pref_name === properties.prefecture) {\n\t\t  log(\"---マッチした ------------------\")\n\t\t  messageValues.lat = row.lat;\n\t      messageValues.lon = row.lon;\n\t  }\n    });\n\n\tcallbackSuccess ({\n\t  messageValues: messageValues,\n      resultType : \"continue\",\n    });\n  }\n});\n\nreturn {\n  resultType : \"pause\"\n};",
+          "result": "// log(JSON.stringify(messageValues));\n\nreturn {\n  indexes : [0],\n  runtimeValues: runtimeValues,\n  messageValues: messageValues,\n  resultType : \"continue\"\n};\n"
+        }
+      }
+    ]
+  }
+}

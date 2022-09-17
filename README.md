@@ -70,7 +70,6 @@ ssapi の url に query string を指定して、絞り込みをさせること�
 
 これを sssapi でアクセスできるようにしてみた.
 しかし sssapi のフリープランでは 50行までのデータしか返ってこなかった。
-
 (有料プランに切り替えて解決させても良いのだが。)
 
 そこで  GAS (Goola App Script) を使って、スプレッドシート内容を json で得ることにした。
@@ -115,3 +114,21 @@ MESH のレシピとして次のように組み立てた。
 (APIKEY の部分は適宜編集をする事)
 
 天気レシピの内容は、./recipes 以下にある *.mesh を import して作成できる。
+
+## python でレシピと同等の動作を実装
+
+Mesh との通信が python でできるようになった。
+
+上で作ったレシピと同様に動作をするものを python で作ってみた。(MacOS 上で)
+
+![images/weather.gif](images/weather.gif)
+
+プログラムコード中の OpenWeather の APIKEy や IFTTT で Slack に投稿をするための URL は 敵技設定した上でコード中に記載をする必要がある。
+
+* Mesh の ボタンデバイスの電源を入れておく。
+* puthon3 weather.py とすて起動する。
+* 数秒すると、connected の表示が出る。
+* ボタンを押す。
+* Mac の画面に 天気が通知される。
+* IFTTT で設定したアクションで Slack 通知をするようにしていたなら、Slack へも天気が通知される。
+

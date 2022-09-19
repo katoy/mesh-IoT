@@ -29,8 +29,10 @@ def on_receive_notify(sender, data: bytearray):
         my_task_one()
     elif data[2] == 2:
         print('Long Pressed.')
+        my_task_two()
     elif data[2] == 3:
         print('Double Pressed.')
+        my_task_three()
 
 def on_receive_indicate(sender, data: bytearray):
     data = bytes(data)
@@ -44,7 +46,10 @@ async def scan(prefix='MESH-100'):
         except StopIteration:
             continue
 
+
+# 都道府県名から移動軽度をえる
 def to_location(name):
+    # Sheet: https://docs.google.com/spreadsheets/d/1Q4hJxEfK5HsH-JNW9zqgOwTiQk1uR-2XK9O-rbJFI8I/edit#gid=0
     url = 'https://api.sssapi.app/ouZltg7fT2t9kbyodTQZ3/'
 
     headers = {
@@ -61,11 +66,33 @@ def to_location(name):
             return  [x["pref_name"], x["lat"], x["lon"]]
     return ["*東京", 35.689185, 139.691648] # 東京の緯度経度
 
+# 国名から移動軽度を得る
+def to_location_world(name):
+    # Shhet: https://docs.google.com/spreadsheets/d/1M5m1UKmcdIThzmZqf4uRTC4ug08YQhAHKjAlfruO_Eo/edit#gid=0
+    url = 'https://script.google.com/macros/s/AKfycbyzU8apFTI42dSReu2M0vifV1_oID-ojQSTnVE5NgLpM1Xdc13T1jwCVCEXg6c1RTP2/exec'
+
+    response = requests.get(url + "?name=" + name)
+    ret = json.loads(response.text)
+    # print(ret)
+    return  [ret["items"]["name"], ret["items"]["lat"], ret["items"]["lon"]]
+
+# 郵便番号から移動軽度を得る
+def to_location_zip(zipcode):
+    # Shhet: https://docs.google.com/spreadsheets/d/1pJSVx8RtbqmTSkl2D8fCcBJKJCwwvY5wZg2wt-w53i4/edit#gid=1219701044
+
+    url = 'https://script.google.com/macros/s/AKfycbxUXULvG2ExdCo5OhO7sh1vCEOo7F_3z3HHz53zoNFQWJVxXHZZFtcgoJ-j5vODIVGL/exec'
+
+    response = requests.get(url + "?zipcode=" + zipcode)
+    ret = json.loads(response.text)
+    # print(ret)
+    return  [ret["items"]["full_name"], ret["items"]["緯度"], ret["items"]["経度"]]
+
+# 緯度経度から天気を得る
 def weather(lat, lon):
     apikey = "" # EDIT
 
     if len(apikey) == 0:
-        print("#----- OpenWeather の APIKEy が未設定です")
+        print("#----- OpenWeather の APIKEY が未設定です")
         return {"name": "xxx", "description": "yyy" }
 
     response = requests.get(
@@ -80,8 +107,10 @@ def weather(lat, lon):
         },
     )
     ret = json.loads(response.text)
+    print(ret)
     return {"name": ret["name"], "description": ret["weather"][0]["description"]}
 
+# IFTTT を呼び出す
 def ifttt_webhook(name, desc):
     payload = {"value1": name, "value2": "", "value3": desc }
     url = "" # EDIT
@@ -90,22 +119,48 @@ def ifttt_webhook(name, desc):
     else:
         response = requests.post(url, data=payload)
 
+# コンソールに通知をダス(for Mac)
 def notify(name, desc):
     if platform.system() == 'Darwin':
         os.system("osascript -e 'display notification \"{}\" with title \"{}\"'".format(desc, name))
     ifttt_webhook(name, desc)
 
+# 都道府県名から天気を得る
 def sub_task(name):
-  locations = to_location(name)
-  # print(locations)
-  ret = weather(locations[1], locations[2])
-  # print(ret["name"], ret["description"])
-  notify(ret["name"], ret["description"])
+    locations = to_location(name)
+    # print(locations)
+    ret = weather(locations[1], locations[2])
+    # print(ret["name"], ret["description"])
+    notify(ret["name"], ret["description"])
+
+# 　国名から天気を得る
+def sub_task_world(name):
+    locations = to_location_world(name)
+    # print(locations)
+    ret = weather(locations[1], locations[2])
+    # print(ret["name"], ret["description"])
+    notify(ret["name"], ret["description"])
+
+# 郵便番号から天気を得る
+def sub_task_zip(zipcode):
+    locations = to_location_zip(zipcode)
+    # print(locations)
+    ret = weather(locations[1], locations[2])
+    # print(ret["name"], ret["description"])
+    notify(ret["name"], ret["description"])
 
 # ---------------------------
 def my_task_one():
     sub_task("東京都")
     sub_task("北海道")
+
+def my_task_two():
+    sub_task_world('日本')
+    sub_task_world('イギリス')
+
+def my_task_three():
+    sub_task_zip('100-0001')
+    sub_task_zip('9070024')
 
 async def main():
     # Scan device
@@ -128,5 +183,20 @@ async def main():
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
-    # my_task_one("東京都")
-    # my_task_one("北海道")
+
+    #
+    # print(to_location("東京都"))
+    # print(to_location("北海道"))
+    # sub_task('北海道')
+    # my_task()
+
+    # print(to_location_world('アメリカ合衆国'))
+    # sub_task_world('アメリカ合衆国')
+    # my_task_two()
+
+    # print(to_location_zip('100-0001'))
+    # print(to_location_zip('640941'))
+    # sub_task_zip('100-0001')
+    # sub_task_zip('640941')
+    # sub_task_zip('9070024')
+    # my_task_three()

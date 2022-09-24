@@ -1,0 +1,434 @@
+[
+    {
+        "id": "38806b75885aaf50",
+        "type": "tab",
+        "label": "フロー 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3edd061a4f93339f",
+        "type": "http in",
+        "z": "38806b75885aaf50",
+        "name": "",
+        "url": "/mesh/button",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "c0a1b724e32e4c8d",
+                "9760c70cae92634b",
+                "7586a7ee56d18ff2"
+            ]
+        ]
+    },
+    {
+        "id": "7586a7ee56d18ff2",
+        "type": "function",
+        "z": "38806b75885aaf50",
+        "name": "フィルター",
+        "func": "\n// node.warn(msg.req.query.event);\n\nvar name = '';\nif (msg.req.query.event == \"1\") { name = \"Single Pressed\"; }\nelse if (msg.req.query.event == \"2\") { name = \"long Pressed\"; }\nelse if (msg.req.query.event == \"3\") { name = \"double Pressed\"; };\n\nif (name != '' ) { node.warn(\"name=\" + name);}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 220,
+        "wires": [
+            [
+                "d5c78c886265e85a"
+            ]
+        ]
+    },
+    {
+        "id": "d5c78c886265e85a",
+        "type": "http response",
+        "z": "38806b75885aaf50",
+        "name": "http response",
+        "statusCode": "",
+        "headers": {
+            "Access-Control-Allow-Origin": "*"
+        },
+        "x": 540,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "c0a1b724e32e4c8d",
+        "type": "switch",
+        "z": "38806b75885aaf50",
+        "name": "Routee",
+        "property": "req.query.event",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 260,
+        "y": 380,
+        "wires": [
+            [
+                "744951f360df2f4d"
+            ],
+            [
+                "48851558f101797e"
+            ],
+            [
+                "09de2f6fce16fa10"
+            ]
+        ]
+    },
+    {
+        "id": "09de2f6fce16fa10",
+        "type": "debug",
+        "z": "38806b75885aaf50",
+        "name": "zip_weather",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "8827cc606160dadf",
+        "type": "pythonshell in",
+        "z": "38806b75885aaf50",
+        "name": "MESJ_BUTTON 接続",
+        "pyfile": "/Users/katoy/github/mesh-IoT/node-red/python/sampleButton.py",
+        "virtualenv": "",
+        "continuous": true,
+        "stdInData": false,
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "fbdafd278ff92fb5"
+            ]
+        ]
+    },
+    {
+        "id": "fbdafd278ff92fb5",
+        "type": "debug",
+        "z": "38806b75885aaf50",
+        "name": "",
+        "active": false,
+        "tosidebar": false,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 380,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "9760c70cae92634b",
+        "type": "debug",
+        "z": "38806b75885aaf50",
+        "name": "show qyery",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "req.query",
+        "targetType": "msg",
+        "statusVal": "req.query.event",
+        "statusType": "auto",
+        "x": 370,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "35ab3ecd180527a1",
+        "type": "http request",
+        "z": "38806b75885aaf50",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://script.google.com/macros/s/AKfycbzzoJhxbXScprIh87u1sxjgRLelyGxQLW0l-GYhIdlEPu84B8wiQXAsfbH4RgPbIStw/exec?name=日本",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 430,
+        "y": 720,
+        "wires": [
+            [
+                "6853b8cdb1742f00"
+            ]
+        ]
+    },
+    {
+        "id": "6853b8cdb1742f00",
+        "type": "debug",
+        "z": "38806b75885aaf50",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "d982540efbcc1bc2",
+        "type": "change",
+        "z": "38806b75885aaf50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "query",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 260,
+        "y": 720,
+        "wires": [
+            [
+                "35ab3ecd180527a1"
+            ]
+        ]
+    },
+    {
+        "id": "9053d256529dc304",
+        "type": "function",
+        "z": "38806b75885aaf50",
+        "name": "日本",
+        "func": "msg.payload = \"日本\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 90,
+        "y": 720,
+        "wires": [
+            [
+                "d982540efbcc1bc2"
+            ]
+        ]
+    },
+    {
+        "id": "23cca21ad5c87af2",
+        "type": "jma-weather",
+        "z": "38806b75885aaf50",
+        "name": "広島",
+        "area": "340000",
+        "x": 270,
+        "y": 580,
+        "wires": [
+            [
+                "add4829dd90575b6",
+                "1c6de9fadc0f77b0"
+            ]
+        ]
+    },
+    {
+        "id": "6d73a795bed0fe88",
+        "type": "inject",
+        "z": "38806b75885aaf50",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 580,
+        "wires": [
+            [
+                "23cca21ad5c87af2"
+            ]
+        ]
+    },
+    {
+        "id": "add4829dd90575b6",
+        "type": "debug",
+        "z": "38806b75885aaf50",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload[0]['timeSeries'][0]['areas'][0]['weathers']",
+        "targetType": "msg",
+        "statusVal": "msg.payload[0]['areas'][0]['weathers']",
+        "statusType": "auto",
+        "x": 420,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "1af296e4f0314d80",
+        "type": "pythonshell in",
+        "z": "38806b75885aaf50",
+        "name": "notify",
+        "pyfile": "/Users/katoy/github/mesh-IoT/node-red/python/notify.py",
+        "virtualenv": "",
+        "continuous": false,
+        "stdInData": false,
+        "x": 610,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1c6de9fadc0f77b0",
+        "type": "function",
+        "z": "38806b75885aaf50",
+        "name": "jma_weather",
+        "func": "\nvar weather = msg.payload[0]['timeSeries'][0]['areas'][0]['weathers'][0];\nvar publisher = msg.payload[0]['publishingOffice']\nvar area = msg.payload[0]['timeSeries'][0]['areas'][0]['area']['name']\nnode.warn(weather);\nmsg.payload = publisher + \" \" + area + \"\\n\" + weather;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 580,
+        "wires": [
+            [
+                "1af296e4f0314d80"
+            ]
+        ]
+    },
+    {
+        "id": "744951f360df2f4d",
+        "type": "jma-weather",
+        "z": "38806b75885aaf50",
+        "name": "jma 東京都",
+        "area": "471000",
+        "x": 510,
+        "y": 320,
+        "wires": [
+            [
+                "0a61acb70c9d85c2",
+                "4248ba61e421c18f"
+            ]
+        ]
+    },
+    {
+        "id": "0a61acb70c9d85c2",
+        "type": "debug",
+        "z": "38806b75885aaf50",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "msg.payload[0]['areas'][0]['weathers']",
+        "statusType": "auto",
+        "x": 700,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "4248ba61e421c18f",
+        "type": "function",
+        "z": "38806b75885aaf50",
+        "name": "jma_weather",
+        "func": "\nvar weather = msg.payload[0]['timeSeries'][0]['areas'][0]['weathers'][0];\nvar publisher = msg.payload[0]['publishingOffice']\nvar area = msg.payload[0]['timeSeries'][0]['areas'][0]['area']['name']\nnode.warn(weather);\nmsg.payload = publisher + \" \" + area + \"\\n\" + weather;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 320,
+        "wires": [
+            [
+                "dbd5d7567bed8cce"
+            ]
+        ]
+    },
+    {
+        "id": "dbd5d7567bed8cce",
+        "type": "pythonshell in",
+        "z": "38806b75885aaf50",
+        "name": "notify",
+        "pyfile": "/Users/katoy/github/mesh-IoT/node-red/python/notify.py",
+        "virtualenv": "",
+        "continuous": false,
+        "stdInData": false,
+        "x": 890,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "48851558f101797e",
+        "type": "debug",
+        "z": "38806b75885aaf50",
+        "name": "world_weather",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "11128b8fbba332c1",
+        "type": "comment",
+        "z": "38806b75885aaf50",
+        "name": "",
+        "info": "[MENU_BUTTIN 接続] ノードをクリックすると、\nputhon プログラムが実行され、MESH の butin デバイスと接続されます。\n\nconnnecte が表示されたら、MESH ボタンデバイスの ボタンを押してみてください。\npython プログラムから、 /get/mesh/button API が呼び出されます。\nそして、node-red の [[get]/mesh/button] ノードが実行されます。\nすると、基調庁に天気AP を使って、天気を所得します。\n\n取得した天気情報を [notify] ノードに和r足します。\n[notify]　ノードでは、 puthon プログラム notify.py を実装します。\nMacOS で動作させている場合は、画面に通知が出ます。\n",
+        "x": 560,
+        "y": 60,
+        "wires": []
+    }
+]

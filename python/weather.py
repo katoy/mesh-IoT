@@ -119,7 +119,7 @@ def ifttt_webhook(name, desc):
     else:
         response = requests.post(url, data=payload)
 
-# コンソールに通知をダス(for Mac)
+# コンソールに通知を出す(for Mac)
 def notify(name, desc):
     if platform.system() == 'Darwin':
         os.system("osascript -e 'display notification \"{}\" with title \"{}\"'".format(desc, name))

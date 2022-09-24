@@ -131,4 +131,11 @@ Mesh との通信が python でできるようになった。
 * ボタンを押す。
 * Mac の画面に 天気が通知される。
 * IFTTT で設定したアクションで Slack 通知をするようにしていたなら、Slack へも天気が通知される。
+## node-red でレシピと同等の動作を実装
 
+作業途中...
+
+- node-red/flows.json
+- node-red/python/*.py
+
+![scrennshot](images/mesh-meets-node-red.gif)

@@ -343,7 +343,7 @@
         "type": "jma-weather",
         "z": "38806b75885aaf50",
         "name": "jma 東京都",
-        "area": "471000",
+        "area": "130000",
         "x": 510,
         "y": 320,
         "wires": [
@@ -367,7 +367,7 @@
         "statusVal": "msg.payload[0]['areas'][0]['weathers']",
         "statusType": "auto",
         "x": 700,
-        "y": 280,
+        "y": 260,
         "wires": []
     },
     {

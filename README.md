@@ -139,3 +139,10 @@ Mesh との通信が python でできるようになった。
 - node-red/python/*.py
 
 ![scrennshot](images/mesh-meets-node-red.gif)
+
+![scrennshot](images/天気2.png)
+
+[flow2](![scrennshot](images/mesh-meets-node-red.gif))
+
+MAC 上で動作させ他場合：
+Mesh ボタンと接続した後に、ボタンクリックすると、東京の天気を、ダブルクイックするとロンドンの天気が画面に通知される。

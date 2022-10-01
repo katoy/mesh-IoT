@@ -138,11 +138,23 @@ Mesh との通信が python でできるようになった。
 - node-red/flows.json
 - node-red/python/*.py
 
+ - flow 1:
+県名からの天気表示を実装
 ![scrennshot](images/mesh-meets-node-red.gif)
 
-![scrennshot](images/天気2.png)
+- flow 2:
+世界の天気の表示を追加
+![scrennshot2](images/天気2.png)
 
-[flow2](![scrennshot](images/mesh-meets-node-red.gif))
+- flow 3:
+サブフローを使って Meshアプリでの表現に近づけた
+![scrennshot3](images/天気3.png)
 
-MAC 上で動作させ他場合：
+[flow2](./node-red/flows2.json)
+
+[flow3](./node-red/flows3.json)
+
+
+
+MAC 上で動作させた場合：
 Mesh ボタンと接続した後に、ボタンクリックすると、東京の天気を、ダブルクイックするとロンドンの天気が画面に通知される。

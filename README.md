@@ -133,7 +133,7 @@ Mesh との通信が python でできるようになった。
 * IFTTT で設定したアクションで Slack 通知をするようにしていたなら、Slack へも天気が通知される。
 ## node-red でレシピと同等の動作を実装
 
-[flow3](./node-red/flows4.json)
+[flow4](./node-red/flows4.json)
 ![scrennshot2](images/天気4.png)
 
 環境変数 APPID に openweaher の appid を設定してください。

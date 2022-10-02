@@ -1,0 +1,19 @@
+[
+    {
+        "id": "8827cc606160dadf",
+        "type": "pythonshell in",
+        "z": "04666b4189ff29a4",
+        "name": "MESH_BUTTON 接続",
+        "pyfile": "/Users/katoy/github/mesh-IoT/node-red/python/sampleButton.py",
+        "virtualenv": "",
+        "continuous": true,
+        "stdInData": false,
+        "x": 160,
+        "y": 40,
+        "wires": [
+            [
+                "fbdafd278ff92fb5"
+            ]
+        ]
+    }
+]

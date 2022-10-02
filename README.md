@@ -133,7 +133,21 @@ Mesh との通信が python でできるようになった。
 * IFTTT で設定したアクションで Slack 通知をするようにしていたなら、Slack へも天気が通知される。
 ## node-red でレシピと同等の動作を実装
 
-作業途中...
+[flow3](./node-red/flows4.json)
+![scrennshot2](images/天気4.png)
+
+環境変数 APPID に openweaher の appid を設定してください。
+```bash
+export APPID="xxxx"
+```
+
+MESH のボタンデバイスを poeron します。
+[MESH_BUTTON 接続] ノードをクリックします。
+connect がされるまで待ちます。
+
+MESH のボタンのクリック, ダブルクリック、長押しで各種の天気が Mac 画面上に通知されます。
+
+### 作業経過
 
 - node-red/flows.json
 - node-red/python/*.py
